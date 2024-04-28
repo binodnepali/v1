@@ -9,7 +9,7 @@ export default function Bio() {
         alt="profile"
       />
 
-      <p>
+      <p className="text-lg text-red-700">
         I am a full-time Frontend Software Engineer and fond of working with
         Javascript frameworks. I mostly love working with React (a UI library),
         Vue, Next.js and Nuxt.js frameworks. I am also quite familiar (working)
