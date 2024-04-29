@@ -1,20 +1,29 @@
-import { Head } from "$fresh/runtime.ts";
 import Bio from "../islands/Bio.tsx";
+import Experience from "../islands/Experience.tsx";
+import Navbar from "../islands/Navbar.tsx";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Portfolio - Binod Nepali</title>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
-      </Head>
-      <div class="p-4 mx-auto max-w-screen-md">
-        <p class="my-6">
-          Welcome to my portfolio build with `fresh`. I am still working on it.
-        </p>
+      <header>
+        <Navbar />
+      </header>
 
-        <Bio />
-      </div>
+      <main className="container mx-auto px-4">
+        <div className="flex flex-col items-center justify-center gap-4 py-8 ">
+          <Bio />
+
+          <Experience />
+        </div>
+      </main>
+
+      <footer className="mt-auto">
+        <div className="container mx-auto p-4">
+          <p className="text-center">
+            &copy; {new Date().getFullYear()} Binod Nepali
+          </p>
+        </div>
+      </footer>
     </>
   );
 }
