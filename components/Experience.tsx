@@ -1,14 +1,17 @@
-import { Profile } from "../src/types/Profile.ts";
+import { Experience } from "../src/types/Profile.ts";
+import Card from "./ui/Card.tsx";
 
-import { type Experience } from "../src/server/getProfile.ts";
+type MapppedExperience = Experience & {
+  nestedExperiences: Experience[];
+};
 
-export default function Experience({ data }: {
-  data: Profile;
+export default function ExperienceSection({ experiences }: {
+  experiences: Experience[];
 }) {
-  const experiences = data.experiences.map((exp) => ({
+  const mappedExperiences = experiences.map((exp) => ({
     ...exp,
     nestedExperiences: [],
-  })).reduce<Experience[]>((acc, exp) => {
+  })).reduce<MapppedExperience[]>((acc, exp) => {
     const index = acc.findIndex((e) => e.company === exp.company);
 
     if (index === -1) {
@@ -22,69 +25,76 @@ export default function Experience({ data }: {
   }, []);
 
   return (
-    <div className="w-full sm:w-1/2">
+    <section className="w-full sm:w-1/2">
       <h4 className="text-2xl font-semibold text-teal-500">Experience</h4>
 
-      {experiences.map((exp, i) => (
+      {mappedExperiences.map((exp, i) => (
         <div
-          className="mt-4
-            border-l-4 border-teal-500 p-4 bg-slate-50 dark:bg-slate-800 rounded-lg shadow-md transition-transform hover:scale-105 duration-300 ease-in-out"
+          className="mt-4"
           key={i}
         >
-          <p className="text-xl font-semibold text-slate-900 dark:text-slate-100 uppercase">
-            {exp.company}
-          </p>
-          <p className="text-lg text-slate-500 dark:text-slate-400">
-            Full time - {calculateWorkDuration(
-              exp.nestedExperiences[
-                exp.nestedExperiences.length - 1
-              ].starts_at,
-              exp.nestedExperiences[0].ends_at,
-            )}
-          </p>
-          <p className="text-lg text-slate-500 dark:text-slate-400">
-            {exp.location}
-          </p>
-
-          {exp.nestedExperiences.map((ex) => (
-            <div className="mt-2">
-              <h5 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
-                {ex.title}
-              </h5>
+          <Card>
+            <>
+              <p className="text-xl font-semibold text-slate-900 dark:text-slate-100 uppercase">
+                {exp.company}
+              </p>
               <p className="text-lg text-slate-500 dark:text-slate-400">
-                {`${formateDate(ex.starts_at)} - ${formateDate(ex.ends_at)}`}
+                Full time - {calculateWorkDuration(
+                  exp.nestedExperiences[
+                    exp.nestedExperiences.length - 1
+                  ].starts_at,
+                  exp.nestedExperiences[0].ends_at,
+                )}
+              </p>
+              <p className="text-lg text-slate-500 dark:text-slate-400">
+                {exp.location}
               </p>
 
-              <p className="mt-2 text-lg text-slate-700 dark:text-slate-100 whitespace-pre-line">
-                {ex.description}
-              </p>
-
-              {ex.skills && (
-                <div className="mt-2 flex flex-col gap-2 text-base text-slate-500 dark:text-slate-400">
-                  <p className="text-base font-semibold text-slate-900 dark:text-slate-100">
-                    Skills
+              {exp.nestedExperiences.map((ex) => (
+                <div className="mt-2">
+                  <h5 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
+                    {ex.title}
+                  </h5>
+                  <p className="text-lg text-slate-500 dark:text-slate-400">
+                    {`${formateDate(ex.starts_at)} - ${
+                      formateDate(ex.ends_at)
+                    }`}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 text-slate-500 dark:text-slate-400">
-                    {ex.skills.map((skill, i) => {
-                      return (
-                        <span
-                          key={skill}
-                          //choose secondary color for text
-                          className="text-emerald-500 dark:text-emerald-400"
-                        >
-                          {` ${skill}${i !== ex.skills.length - 1 ? "," : ""}`}
-                        </span>
-                      );
-                    })}
-                  </div>
+                  <p className="mt-2 text-lg text-slate-700 dark:text-slate-100 whitespace-pre-line">
+                    {ex.description}
+                  </p>
+
+                  {ex.skills && (
+                    <div className="mt-2 flex flex-col gap-2 text-base text-slate-500 dark:text-slate-400">
+                      <p className="text-base font-semibold text-slate-900 dark:text-slate-100">
+                        Skills
+                      </p>
+
+                      <div className="flex flex-wrap gap-2 text-slate-500 dark:text-slate-400">
+                        {ex.skills.map((skill, i) => {
+                          return (
+                            <span
+                              key={skill}
+                              //choose secondary color for text
+                              className="text-emerald-500 dark:text-emerald-400"
+                            >
+                              {` ${skill}${
+                                i !== ex.skills.length - 1 ? "," : ""
+                              }`}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          ))}
+              ))}
+            </>
+          </Card>
         </div>
       ))}
-    </div>
+    </section>
   );
 }
 

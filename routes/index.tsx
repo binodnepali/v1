@@ -1,15 +1,16 @@
-import Bio from "../components/Bio.tsx";
-import Experience from "../components/Experience.tsx";
 import Navbar from "../islands/Navbar.tsx";
+import BioSection from "../components/Bio.tsx";
+import ExperienceSection from "../components/Experience.tsx";
+import EducationSection from "../components/Education.tsx";
 
-// import data from "../data/linkedin-profile.json" with {
-//   type: "json",
-// };
+import data from "../data/linkedin-profile.json" with {
+  type: "json",
+};
 
-import { getProfile } from "../src/server/getProfile.ts";
+// import { getProfile } from "../src/server/getProfile.ts";
 
-export default async function Home() {
-  const data = await getProfile();
+export default function Home() {
+  //const data = await getProfile();
 
   return (
     <>
@@ -23,9 +24,21 @@ export default async function Home() {
 
       <main className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center gap-4 py-8 ">
-          <Bio data={data} />
+          <BioSection
+            birth_date={data.birth_date}
+            job_start_date={data.job_start_date}
+            profile_pic_url={data.profile_pic_url}
+            full_name={data.full_name}
+            city={data.city}
+            country_full_name={data.country_full_name}
+            nationality={data.nationality}
+            occupation={data.occupation}
+            summary={data.summary}
+          />
 
-          <Experience data={data} />
+          <ExperienceSection experiences={data.experiences} />
+
+          <EducationSection educations={data.education} />
         </div>
       </main>
 

@@ -15,9 +15,3 @@ export const getProfile = async () => {
 
   return await response.json() as Profile;
 };
-
-export type Experience =
-  & Awaited<ReturnType<typeof getProfile>>["experiences"][0]
-  & {
-    nestedExperiences: Experience[];
-  };

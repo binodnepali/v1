@@ -1,11 +1,11 @@
 import { useEffect, useState } from "preact/hooks";
 
-import { Button } from "../components/Button.tsx";
-import { Link } from "../components/Link.tsx";
+import { Button } from "../components/ui/Button.tsx";
+import { Link } from "../components/ui/Link.tsx";
 
-import { IconLinkedIn } from "../components/IconLinkedIn.tsx";
-import { IconEmail } from "../components/IconEmail.tsx";
-import { IconGitHub } from "../components/IconGitHub.tsx";
+import { IconLinkedIn } from "../components/ui/IconLinkedIn.tsx";
+import { IconEmail } from "../components/ui/IconEmail.tsx";
+import { IconGitHub } from "../components/ui/IconGitHub.tsx";
 
 export default function Navbar({
   github_profile_id,
