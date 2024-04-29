@@ -7,26 +7,34 @@ import { IconLinkedIn } from "../components/IconLinkedIn.tsx";
 import { IconEmail } from "../components/IconEmail.tsx";
 import { IconGitHub } from "../components/IconGitHub.tsx";
 
-const links = [
-  {
-    href: "https://www.linkedin.com/in/binodnepali",
-    label: "linkedin",
-    icon: <IconLinkedIn className="fill-current" />,
-  },
-  {
-    href: "mailto:nepalibinod9@gmail.com",
-    label: "email",
-    icon: <IconEmail className="fill-current" />,
-  },
-  {
-    href: "https://github.com/binodnepali/portfolio",
-    label: "github",
-    icon: <IconGitHub className="fill-current" />,
-  },
-];
-
-export default function Navbar() {
+export default function Navbar({
+  github_profile_id,
+  linkedin_profile_id,
+  email,
+}: {
+  linkedin_profile_id: string;
+  github_profile_id: string;
+  email: string;
+}) {
   const { isDark, toggleTheme } = useTheme();
+
+  const links = [
+    {
+      href: linkedin_profile_id,
+      label: "linkedin",
+      icon: <IconLinkedIn className="fill-current" />,
+    },
+    {
+      href: `mailto:${email}`,
+      label: "email",
+      icon: <IconEmail className="fill-current" />,
+    },
+    {
+      href: github_profile_id,
+      label: "github",
+      icon: <IconGitHub className="fill-current" />,
+    },
+  ];
 
   return (
     <nav class="h-14 flex items-center px-4">

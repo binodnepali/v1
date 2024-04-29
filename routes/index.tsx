@@ -1,19 +1,26 @@
-import Bio from "../islands/Bio.tsx";
-import Experience from "../islands/Experience.tsx";
+import Bio from "../components/Bio.tsx";
+import Experience from "../components/Experience.tsx";
 import Navbar from "../islands/Navbar.tsx";
+import { getProfile } from "../src/server/getProfile.ts";
 
-export default function Home() {
+export default async function Home() {
+  const data = await getProfile();
+
   return (
     <>
       <header>
-        <Navbar />
+        <Navbar
+          github_profile_id={data.extra.github_profile_id}
+          linkedin_profile_id={data.extra.linkedin_profile_id}
+          email={data.email}
+        />
       </header>
 
       <main className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center gap-4 py-8 ">
-          <Bio />
+          <Bio data={data} />
 
-          <Experience />
+          <Experience data={data} />
         </div>
       </main>
 

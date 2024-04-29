@@ -1,6 +1,6 @@
 import { FreshContext } from "$fresh/server.ts";
 
-import profileData from "../../mock/person-profile-endpoint-response.json" with {
+import profileData from "../../data/linkedin-profile.json" with {
   type: "json",
 };
 
