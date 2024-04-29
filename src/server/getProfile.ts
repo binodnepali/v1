@@ -1,7 +1,10 @@
 import { Profile } from "../types/Profile.ts";
 
+const env = Deno.env.toObject();
+const baseurl = env.BASE_URL || "http://localhost:8000/api";
+
 export const getProfile = async () => {
-  const response = await fetch("http://localhost:8000/api/profile");
+  const response = await fetch(`${baseurl}/profile`);
   return await response.json() as Profile;
 };
 
