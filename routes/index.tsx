@@ -1,11 +1,12 @@
 import Bio from "../components/Bio.tsx";
 import Experience from "../components/Experience.tsx";
 import Navbar from "../islands/Navbar.tsx";
-import { getProfile } from "../src/server/getProfile.ts";
 
-export default async function Home() {
-  const data = await getProfile();
+import data from "../data/linkedin-profile.json" with {
+  type: "json",
+};
 
+export default function Home() {
   return (
     <>
       <header>
