@@ -13,7 +13,7 @@ export default function App({ Component }: PageProps) {
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         />
       </head>
-      <body class="min-h-full flex flex-col bg-background-on-light">
+      <body class="min-h-full flex flex-col bg-white text-slate-900 dark:bg-slate-800 dark:text-white">
         <Component />
       </body>
     </html>

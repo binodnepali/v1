@@ -1,3 +1,5 @@
+import Bio from "../islands/Bio.tsx";
+import Experience from "../islands/Experience.tsx";
 import Navbar from "../islands/Navbar.tsx";
 
 export default function Home() {
@@ -7,14 +9,17 @@ export default function Home() {
         <Navbar />
       </header>
 
-      <main class="container mx-auto px-4">
-        <h1 class="text-4xl font-bold">Binod Nepali</h1>
-        <p class="text-2xl font-semibold">Software Engineer</p>
+      <main className="container mx-auto px-4">
+        <div className="flex flex-col items-center justify-center gap-4 py-8 ">
+          <Bio />
+
+          <Experience />
+        </div>
       </main>
 
-      <footer class="mt-auto">
-        <div class="container mx-auto p-4">
-          <p class="text-center">
+      <footer className="mt-auto">
+        <div className="container mx-auto p-4">
+          <p className="text-center">
             &copy; {new Date().getFullYear()} Binod Nepali
           </p>
         </div>
