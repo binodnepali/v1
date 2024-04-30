@@ -31,7 +31,7 @@ cd portfolio
 
 ### Usage
 
-Start the project:
+#### Start the project
 
 ```bash
 deno task start
@@ -39,20 +39,31 @@ deno task start
 
 This will watch the project directory and restart as necessary.
 
-Build the project
+#### Build the project
 
 ```bash
 deno task build
 ```
 
-Preview the project
+#### Preview the project
 
 ```bash
 deno task preview
 ```
 
-Update the project
+#### Update the project
 
 ```bash
 deno task update
 ```
+
+#### Generate release
+
+> Make sure you have npm version 5.2.0 or higher
+
+```bash
+npx commit-and-tag-version
+```
+
+Learn more about
+[it](https://github.com/absolute-version/commit-and-tag-version)
