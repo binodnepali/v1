@@ -1,7 +1,11 @@
 import { JSX } from "preact";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 
-export function Button(props: JSX.HTMLAttributes<HTMLButtonElement>) {
+type ButtonProps = JSX.HTMLAttributes<HTMLButtonElement> & {
+  variant?: "primary" | "secondary";
+};
+
+export function Button(props: ButtonProps) {
   return (
     <button
       {...props}
