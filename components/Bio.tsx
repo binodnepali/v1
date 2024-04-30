@@ -27,7 +27,7 @@ export default function BioSection(
   const yearOfExperience = new Date().getFullYear() - job_start_date.year;
 
   return (
-    <section className="w-full sm:w-1/2">
+    <section>
       <div className="flex flex-col items-center justify-center gap-2 mt-4 mb-8">
         <img
           src={profile_pic_url}
@@ -37,9 +37,9 @@ export default function BioSection(
           alt={full_name}
         />
 
-        <h3 className="text-3xl font-semibold text-teal-500">
+        <h2 className="text-2xl font-semibold text-teal-500">
           {full_name}
-        </h3>
+        </h2>
 
         <p className="text-lg text-slate-500 dark:text-slate-400">
           {age} years old | {nationality}
@@ -61,9 +61,9 @@ export default function BioSection(
       </div>
 
       <div>
-        <h4 className="text-2xl font-semibold text-teal-500">About me</h4>
+        <h3 className="text-xl font-semibold text-teal-500">About me</h3>
 
-        <p className="text-lg whitespace-pre-line">
+        <p className="text-base whitespace-pre-line">
           {summary.replace(
             "{{year_of_experience}}",
             `${yearOfExperience}`,

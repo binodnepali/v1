@@ -26,8 +26,8 @@ export default function ExperienceSection({ experiences }: {
   }, []);
 
   return (
-    <section className="w-full sm:w-1/2">
-      <h4 className="text-2xl font-semibold text-teal-500">Experience</h4>
+    <section>
+      <h3 className="text-xl font-semibold text-teal-500">Experience</h3>
 
       {mappedExperiences.map((exp, i) => (
         <div
@@ -36,20 +36,22 @@ export default function ExperienceSection({ experiences }: {
         >
           <Card>
             <>
-              <p className="text-xl font-semibold text-slate-900 dark:text-slate-100 uppercase">
-                {exp.company}
-              </p>
-              <p className="text-lg text-slate-500 dark:text-slate-400">
-                Full time - {calculateWorkDuration(
-                  exp.nestedExperiences[
-                    exp.nestedExperiences.length - 1
-                  ].starts_at,
-                  exp.nestedExperiences[0].ends_at,
-                )}
-              </p>
-              <p className="text-lg text-slate-500 dark:text-slate-400">
-                {exp.location}
-              </p>
+              <section>
+                <h4 className="text-lg font-semibold text-slate-900 dark:text-slate-100 uppercase">
+                  {exp.company}
+                </h4>
+                <p className="text-base text-slate-500 dark:text-slate-400">
+                  Full time - {calculateWorkDuration(
+                    exp.nestedExperiences[
+                      exp.nestedExperiences.length - 1
+                    ].starts_at,
+                    exp.nestedExperiences[0].ends_at,
+                  )}
+                </p>
+                <p className="text-base text-slate-500 dark:text-slate-400">
+                  {exp.location}
+                </p>
+              </section>
 
               <SeeMoreExperiences experiences={exp.nestedExperiences} />
             </>

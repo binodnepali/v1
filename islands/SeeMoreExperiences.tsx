@@ -43,21 +43,21 @@ export default function SeeMoreExperiences(
 
 function SeeMoreExperience({ ex }: { ex: Experience }) {
   return (
-    <div className="mt-2">
-      <h5 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
+    <section className="mt-2">
+      <h4 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
         {ex.title}
-      </h5>
-      <p className="text-lg text-slate-500 dark:text-slate-400">
+      </h4>
+      <p className="text-base text-slate-500 dark:text-slate-400">
         {`${formateDate(ex.starts_at)} - ${formateDate(ex.ends_at)}`}
       </p>
 
-      <p className="mt-2 text-lg text-slate-700 dark:text-slate-100 whitespace-pre-line">
+      <p className="mt-2 text-base text-slate-700 dark:text-slate-100 whitespace-pre-line">
         {ex.description}
       </p>
 
       {ex.skills && (
         <div className="mt-2 flex flex-col gap-2 text-base text-slate-500 dark:text-slate-400">
-          <p className="text-base font-semibold text-slate-900 dark:text-slate-100">
+          <p className="font-semibold text-slate-900 dark:text-slate-100">
             Skills
           </p>
 
@@ -76,7 +76,7 @@ function SeeMoreExperience({ ex }: { ex: Experience }) {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }
 

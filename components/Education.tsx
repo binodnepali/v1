@@ -5,9 +5,9 @@ export default function EducationSection({ educations }: {
   educations: Education[];
 }) {
   return (
-    <section className="w-full sm:w-1/2">
-      <h4 className="text-2xl font-semibold text-teal-500">Education</h4>
-      <div className="grid grid-cols-1 gap-4">
+    <section>
+      <h3 className="text-xl font-semibold text-teal-500">Education</h3>
+      <div className="mt-4">
         {educations.map((education, i) => (
           <div
             className="mt-4"
