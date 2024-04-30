@@ -48,6 +48,9 @@ function SeeMoreExperience({ ex }: { ex: Experience }) {
         {ex.title}
       </h4>
       <p className="text-base text-slate-500 dark:text-slate-400">
+        {`${ex.employment_type}`}
+      </p>
+      <p className="text-base text-slate-500 dark:text-slate-400">
         {`${formateDate(ex.starts_at)} - ${formateDate(ex.ends_at)}`}
       </p>
 

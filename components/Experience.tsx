@@ -41,7 +41,7 @@ export default function ExperienceSection({ experiences }: {
                   {exp.company}
                 </h4>
                 <p className="text-base text-slate-500 dark:text-slate-400">
-                  Full time - {calculateWorkDuration(
+                  {calculateWorkDuration(
                     exp.nestedExperiences[
                       exp.nestedExperiences.length - 1
                     ].starts_at,

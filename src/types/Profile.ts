@@ -64,6 +64,7 @@ export interface Experience {
   company: string;
   company_linkedin_profile_url: string;
   title: string;
+  employment_type: string;
   description: null | string;
   skills: string[];
   location: string;
